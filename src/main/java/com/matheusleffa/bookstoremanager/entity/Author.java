@@ -1,4 +1,4 @@
-package com.matheusleffa.bookstoremanager.Entity;
+package com.matheusleffa.bookstoremanager.entity;
 
 import jakarta.persistence.*;
 import lombok.*;

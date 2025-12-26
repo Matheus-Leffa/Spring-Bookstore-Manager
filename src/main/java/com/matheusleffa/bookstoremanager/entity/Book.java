@@ -1,4 +1,4 @@
-package com.matheusleffa.bookstoremanager.Entity;
+package com.matheusleffa.bookstoremanager.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -35,5 +35,5 @@ public class Book {
     @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     @JoinColumn(name = "author_id")
     private Author author;
-    
+
 }
