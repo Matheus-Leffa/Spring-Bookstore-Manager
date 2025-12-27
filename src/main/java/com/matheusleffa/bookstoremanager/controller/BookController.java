@@ -1,9 +1,11 @@
 package com.matheusleffa.bookstoremanager.controller;
 
+import com.matheusleffa.bookstoremanager.dto.BookDTO;
 import com.matheusleffa.bookstoremanager.dto.MessageResponseDTO;
 import com.matheusleffa.bookstoremanager.entity.Book;
 import com.matheusleffa.bookstoremanager.repository.BookRepository;
 import com.matheusleffa.bookstoremanager.service.BookService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,7 +24,7 @@ public class BookController {
     }
 
     @PostMapping
-    public MessageResponseDTO create(@RequestBody Book book){
-        return bookService.create(book);
+    public MessageResponseDTO create(@RequestBody @Valid BookDTO bookDTO){
+        return bookService.create(bookDTO);
     }
 }
