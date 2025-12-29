@@ -2,15 +2,13 @@ package com.matheusleffa.bookstoremanager.service;
 
 import com.matheusleffa.bookstoremanager.dto.BookDTO;
 import com.matheusleffa.bookstoremanager.entity.Book;
+import com.matheusleffa.bookstoremanager.exception.BookNotFoundException;
 import com.matheusleffa.bookstoremanager.mapper.BookMapper;
 import com.matheusleffa.bookstoremanager.repository.BookRepository;
-import com.matheusleffa.bookstoremanager.utils.BookUtils;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Optional;
@@ -32,7 +30,7 @@ public class BookServiceTest {
     private BookService bookService;
 
     @Test
-    void whenGivenExistingIdThenReturnThisBook(){
+    void whenGivenExistingIdThenReturnThisBook()  {
         Book expectedFoundBook = createFakeBook();
 
         when(bookRepository.findById(expectedFoundBook.getId())).thenReturn(Optional.of(expectedFoundBook));

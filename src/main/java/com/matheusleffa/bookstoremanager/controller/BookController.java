@@ -2,8 +2,7 @@ package com.matheusleffa.bookstoremanager.controller;
 
 import com.matheusleffa.bookstoremanager.dto.BookDTO;
 import com.matheusleffa.bookstoremanager.dto.MessageResponseDTO;
-import com.matheusleffa.bookstoremanager.entity.Book;
-import com.matheusleffa.bookstoremanager.repository.BookRepository;
+import com.matheusleffa.bookstoremanager.exception.BookNotFoundException;
 import com.matheusleffa.bookstoremanager.service.BookService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +25,7 @@ public class BookController {
     }
 
     @GetMapping("/{id}")
-    public BookDTO findById(@PathVariable Long id){
+    public BookDTO findById(@PathVariable Long id) {
         return bookService.findById(id);
     }
 }
