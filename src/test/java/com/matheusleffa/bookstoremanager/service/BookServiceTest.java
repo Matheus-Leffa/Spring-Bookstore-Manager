@@ -15,6 +15,7 @@ import java.util.Optional;
 
 import static com.matheusleffa.bookstoremanager.utils.BookUtils.createFakeBook;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -40,5 +41,15 @@ public class BookServiceTest {
         assertEquals(expectedFoundBook.getName(), bookDTO.getName());
         assertEquals(expectedFoundBook.getIsbn(), bookDTO.getName());
         assertEquals(expectedFoundBook.getPublisherName(), bookDTO.getName());
+    }
+
+    @Test
+    void whenGivenUnexistingIdThenNotFindThrowAnException(){
+        var invalidId = 10L;
+
+        when(bookRepository.findById(invalidId))
+                .thenReturn(Optional.ofNullable(any(Book.class)));
+
+        assertThrows(BookNotFoundException.class, () ->bookService.findById(invalidId));
     }
 }
